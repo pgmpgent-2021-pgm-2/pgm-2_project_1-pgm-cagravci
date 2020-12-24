@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+    
+    box-sizing: border-box;
+}
+
+li{
+    list-style: none;
+}
+
+.center-width{
+    width: 90rem;
+    max-width: 100%;
+    margin: auto;
+}
+
+nav{
+    padding: 1rem;
+    background-color: #24292e;
+    color: #fff;
+    fill: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.nav__items{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.nav__item{
+    margin-right: 1rem;
+}
