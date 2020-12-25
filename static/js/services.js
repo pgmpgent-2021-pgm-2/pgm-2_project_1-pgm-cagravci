@@ -1,7 +1,20 @@
 function GitHubApi () {
-    this.getSearchUsers = async (name) => {
-
-    }
+    this.getReposOfUser = async (username, callback) => {
+        const GITHUB_API_REPOS = `https://api.github.com/users/${username}/repos?page=1&per_page=50`;
+        fetch(GITHUB_API_REPOS, {})
+                .then(response => response.json())
+                .then(json => callback(json))
+                .catch((error) => console.error(error));
+    } 
+    this.getFollowersOfUser = async (username, callback) => {
+        const GITHUB_API_FOLLOWERS = `https://api.github.com/users/${username}/followers?page=1&per_page=100`;
+        fetch(GITHUB_API_FOLLOWERS, {})
+                .then(response => response.json())
+                .then(json => callback(json))
+                .catch((error) => console.error(error));
+    } 
+    
+    
 }
 
 function UserApi () {

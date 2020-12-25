@@ -1,21 +1,31 @@
 * {
     padding: 0;
     margin: 0;
-    
+
     box-sizing: border-box;
 }
 
-li{
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
     list-style: none;
 }
 
-.center-width{
-    width: 90rem;
-    max-width: 100%;
-    margin: auto;
+a,
+p,
+h2,
+h3,
+h4 {
+    color: #fff;
 }
 
-nav{
+img {
+    max-width: 100%;
+}
+
+nav {
     padding: 1rem;
     background-color: #24292e;
     color: #fff;
@@ -23,10 +33,20 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
-.nav__items{
+.pgm-persons__titel {
+    background-color: #59a6ff;
+}
+
+.center-width {
+    width: 90rem;
+    max-width: 100%;
+    margin: auto;
+}
+
+.nav__items {
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -34,6 +54,205 @@ nav{
     flex-wrap: wrap;
 }
 
-.nav__item{
+.nav__item {
     margin-right: 1rem;
+}
+
+.main__wrapper {
+    background-color: #0d1017;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.pgm-persons__container {
+
+    flex-basis: 20%;
+    border: 1px solid #F9F9F9;
+}
+
+.pgm-persons__titel {
+    padding-left: 1rem;
+
+}
+
+.pgm-persons__titel h2 {
+    color: #24292e;
+}
+
+.pgm-persons__list {
+    padding-left: 1rem;
+}
+
+.pgm-persons__item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.pgm-persons__img {
+    flex-basis: 15%;
+    margin-right: 1rem;
+}
+
+.pgm-persons__sname {
+    flex-basis: 40%;
+    flex-grow: 1;
+}
+
+.pgm-persons__fname {
+    flex-basis: 100%;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.github__users {
+    flex-basis: 20%;
+}
+
+/* ------------repos------------------ */
+.person__detail {
+    flex-basis: 40%;
+    flex-grow: 1;
+}
+
+.person__header {
+    position: relative;
+
+}
+
+.person__header img{
+    width: 100%;
+}
+
+.person__fname {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem 1.2rem;
+}
+
+.person__student {
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem 1.2rem;
+}
+
+.person__slogan {
+    position: absolute;
+    color: #fff;
+    top: 75%;
+    right: 50%;
+    transform: translate(50%);
+    display: block;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.2rem;
+}
+
+.person__repos {
+    margin: 1rem;
+
+}
+
+.person__repos__title {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.person__repos__title h2 {
+    background-color: #59a6ff;
+    color: #0d1017;
+    padding: 1rem;
+    display: inline;
+}
+
+.person__repos__item{
+    border: 1px solid grey;
+    padding: 1rem;
+}
+.person__repos__description{
+    margin: 0.5rem auto;
+}
+.person__repos__description p{
+    color: #768799;
+
+}
+
+.person__repos__details{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.person__repos__details li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 1rem;
+}
+
+.person__repos__details svg{
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: auto;
+    fill: #59a6ff;
+    /* fill:#212121; */
+
+}
+
+
+/* ---------followers */
+
+.person__followers{
+    padding: 1rem;
+}
+.person__followers__titel {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.person__followers__titel h2 {
+    background-color: #59a6ff;
+    color: #0d1017;
+    padding: 1rem;
+    display: inline;
+}
+
+.person__followers__list{
+    border: 1px solid grey;
+    padding: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.person__followers__item{
+    position: relative;
+    margin: 0.1rem;
+    flex-basis: 20%;
+   
+}
+
+.person__followers__item p{
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    font-size: 0.8rem;
+
+    padding: 0.4rem 0.6rem;
+    background-color: rgba(0, 0, 0, 0.3);
 }
