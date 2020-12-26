@@ -9,6 +9,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+button{
+    cursor: pointer;
+}
+
 li {
     list-style: none;
 }
@@ -255,4 +259,57 @@ nav {
 
     padding: 0.4rem 0.6rem;
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.github__users__titel{
+    background-color: #59a6ff;
+    
+    
+}
+
+.github__users__titel h2{
+    color: #0d1017;
+    padding: 1rem;
+    display: inline;
+}
+
+.github__users form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.github__users input{
+    background-color: #262930;
+    border: none;
+    flex-basis: 70%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.github__users button{
+    color: #fff;
+    padding: 1rem;
+    border:none;
+    background-color: #0d1017;
+
+}
+
+.github__users__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 1rem;
+}
+
+.github__item__img{
+    flex-basis: 30%;
+    margin-right: 0.8rem;
+}
+
+.github__item__text{
+    flex-basis: 70%;
 }

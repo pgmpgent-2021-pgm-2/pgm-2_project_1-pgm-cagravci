@@ -13,6 +13,13 @@ function GitHubApi () {
                 .then(json => callback(json))
                 .catch((error) => console.error(error));
     } 
+    this.getSearchUsers = async (name, callback) => {
+        const GITHUB_API_USERS = `https://api.github.com/search/users?sort=desc&page=1&per_page=100&q=${name}`;
+        fetch(GITHUB_API_USERS, {})
+                .then(response => response.json())
+                .then(json => callback(json))
+                .catch((error) => console.error(error));
+    } 
     
     
 }

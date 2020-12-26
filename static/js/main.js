@@ -21,25 +21,71 @@ void (() => {
                     this.updateUserDetails(item)
                 })             
             });
+            let $searchBtn = document.querySelector('#search__btn')
+            $searchBtn.addEventListener('click', event => {
+                let name = document.querySelector('#search').value;
+                this.fetchUsersByName(name);
+            })
+
+            let $usersSearch = document.querySelectorAll('.github__users__item')
+            $usersSearch.forEach(user => {
+                user.addEventListener('click', event=> {
+                    console.log(user)
+                    this.updateUserDetails(user)
+                })
+            })
+        },
+        async fetchUsersByName(name) {
+            let userByName = new GitHubApi();
+            userByName.getSearchUsers(name, users => {
+                console.log('the users are fetched', users)
+                this.updateGHUsersList(users)
+            })
+        },
+        updateGHUsersList(users){
+            console.log('example of a user', users.items[0])
+            console.log('updating users from search, with following users, is started...', users)
+            let str= '';
+            for (let user in users.items) {
+                user = users.items[user]
+                str += `
+                <li class="github__users__item" id="search__${user.login}">
+                <div class="github__item__img">
+                    <img src="${user.avatar_url}" alt="${user.login}">
+                </div>
+                <div class="github__item__text">
+                     <h3>${user.login}</h3>
+                </div>
+            </li>`
+            }
+            document.querySelector('.github__users__list').innerHTML = str;
+            this.registerListeners();
+
+          
         },
         updateUserDetails (item) {
             console.log('the following user is selected: ', item.id)
             console.log('updating user detail is started...')
-            //find the user in our json file
-            let str = '';
-            for (const key in this.users) {
-                let user = this.users[key];
-                if (user.portfolio['GitHub gebruikersnaam'] === item.id) {
-                    str = `
-                    <img src="${user.thumbnail}"
-                    alt="">
-                <p class="person__fname">${user.voornaam} ${user.familienaam}</p>
-                <p class="person__student">${(user.isStudentboolean) ? 'student' : 'docent'}</p>
-                <p class="person__slogan">${user.lijfspreuk}</p>`
-                }
-                document.querySelector('.person__header').innerHTML = str;
-            }
 
+            //find if it's a user from the json file or github search
+            if (!item.id.includes('search__')){
+                //find the user in our json file
+                let str = '';
+                for (const key in this.users) {
+                    let user = this.users[key];
+                    if (user.portfolio['GitHub gebruikersnaam'] === item.id) {
+                        str = `
+                        <img src="${user.thumbnail}"
+                        alt="">
+                    <p class="person__fname">${user.voornaam} ${user.familienaam}</p>
+                    <p class="person__student">${(user.isStudentboolean) ? 'student' : 'docent'}</p>
+                    <p class="person__slogan">${user.lijfspreuk}</p>`
+                    }
+                    document.querySelector('.person__header').innerHTML = str;
+                }
+            } 
+            
+            item.id = item.id.replace('search__','');
             //update the details of the selected person
             this.fetchDetailsOfUser(item.id); //fetch repos -- followers...
 
