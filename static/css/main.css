@@ -303,6 +303,7 @@ nav {
     align-items: center;
 
     margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 .github__item__img{

@@ -8,34 +8,36 @@ void (() => {
             this.fetchWeather();
             //fetch API data for users
             this.fetchUsers();
-        
+
             this.registerListeners();
+            
         },
         cacheElements () {
 
         },
         registerListeners () {
-            let $pgmTeamList = document.querySelectorAll('.pgm-persons__item')
-            $pgmTeamList.forEach(item => {
-                item.addEventListener('click', event => {
-                    this.updateUserDetails(item)
-                })             
-            });
+          
             let $searchBtn = document.querySelector('#search__btn')
-            $searchBtn.addEventListener('click', event => {
-                let name = document.querySelector('#search').value;
-                this.fetchUsersByName(name);
-            })
-
-            let $usersSearch = document.querySelectorAll('.github__users__item')
-            $usersSearch.forEach(user => {
-                user.addEventListener('click', event=> {
-                    console.log(user)
-                    this.updateUserDetails(user)
+                $searchBtn.addEventListener('click', event => {
+                    let searchStr = document.querySelector('#search').value;
+                    console.log('this is the search str', searchStr)
+                    this.fetchUsersByName(searchStr);
                 })
-            })
+
+            let $search = document.querySelector('#search');
+                $search.addEventListener('keypress', event => {
+                    let searchStr = document.querySelector('#search').value;
+                    if (event.keyCode === 13) {
+                        //if enter-key(13) is pressed, act as if the user mouse-clicked on the search button
+                        this.fetchUsersByName(searchStr);
+                    }
+                })
+            
+        
+           
         },
         async fetchUsersByName(name) {
+            console.log('this user name is being fetched: ', name)
             let userByName = new GitHubApi();
             userByName.getSearchUsers(name, users => {
                 console.log('the users are fetched', users)
@@ -50,17 +52,23 @@ void (() => {
                 user = users.items[user]
                 str += `
                 <li class="github__users__item" id="search__${user.login}">
-                <div class="github__item__img">
-                    <img src="${user.avatar_url}" alt="${user.login}">
-                </div>
-                <div class="github__item__text">
-                     <h3>${user.login}</h3>
-                </div>
-            </li>`
+                    <div class="github__item__img">
+                        <img src="${user.avatar_url}" alt="${user.login}">
+                    </div>
+                    <div class="github__item__text">
+                        <h3>${user.login}</h3>
+                    </div>
+                </li>`
             }
             document.querySelector('.github__users__list').innerHTML = str;
-            this.registerListeners();
-
+            // this.registerListeners();
+            let $usersSearch = document.querySelectorAll('.github__users__item')
+            $usersSearch.forEach(user => {
+                    user.addEventListener('click', event=> {
+                        console.log(user)
+                        this.updateUserDetails(user)
+                    });
+            })
           
         },
         updateUserDetails (item) {
@@ -182,8 +190,8 @@ void (() => {
                 console.log('pgm users are fetched: ', users);
                 this.users = users;
                 this.updatePGMUsers(users);
-                this.registerListeners();
             });
+            
         },
         updatePGMUsers(users) {
             console.log('updating the pgm users has started...')
@@ -207,6 +215,17 @@ void (() => {
            }
 
            document.querySelector('.pgm-persons__list').innerHTML = str;
+
+                     // this.registerListeners();
+                     let $pgmTeamList = document.querySelectorAll('.pgm-persons__item')
+                     $pgmTeamList.forEach(item => {
+                     if(item.getAttribute('hasEvent') !== true) {
+                         item.addEventListener('click', event => {
+                             this.updateUserDetails(item)
+                         })
+                         item.setAttribute('hasEvent', true)
+                     }
+                 });
 
         },
         async fetchGhentCovidPositiveCases() {
