@@ -9,7 +9,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
@@ -129,7 +129,7 @@ nav {
 
 }
 
-.person__header img{
+.person__header img {
     width: 100%;
 }
 
@@ -180,26 +180,28 @@ nav {
     display: inline;
 }
 
-.person__repos__item{
+.person__repos__item {
     border: 1px solid grey;
     padding: 1rem;
 }
-.person__repos__description{
+
+.person__repos__description {
     margin: 0.5rem auto;
 }
-.person__repos__description p{
+
+.person__repos__description p {
     color: #768799;
 
 }
 
-.person__repos__details{
+.person__repos__details {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.person__repos__details li{
+.person__repos__details li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,7 +209,7 @@ nav {
     margin-right: 1rem;
 }
 
-.person__repos__details svg{
+.person__repos__details svg {
     margin-right: 0.5rem;
     width: 1rem;
     height: auto;
@@ -219,9 +221,10 @@ nav {
 
 /* ---------followers */
 
-.person__followers{
+.person__followers {
     padding: 1rem;
 }
+
 .person__followers__titel {
     margin-bottom: 1rem;
     margin-top: 2rem;
@@ -234,7 +237,7 @@ nav {
     display: inline;
 }
 
-.person__followers__list{
+.person__followers__list {
     border: 1px solid grey;
     padding: 1rem;
     margin-top: 2rem;
@@ -244,14 +247,14 @@ nav {
     flex-wrap: wrap;
 }
 
-.person__followers__item{
+.person__followers__item {
     position: relative;
     margin: 0.1rem;
     flex-basis: 20%;
-   
+
 }
 
-.person__followers__item p{
+.person__followers__item p {
     position: absolute;
     bottom: 0;
     color: #fff;
@@ -262,25 +265,25 @@ nav {
 }
 
 
-.github__users__titel{
+.github__users__titel {
     background-color: #59a6ff;
-    
-    
+
+
 }
 
-.github__users__titel h2{
+.github__users__titel h2 {
     color: #0d1017;
     padding: 1rem;
     display: inline;
 }
 
-.github__users form{
+.github__users form {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.github__users input{
+.github__users input {
     background-color: #262930;
     border: none;
     flex-basis: 70%;
@@ -289,15 +292,15 @@ nav {
     color: #fff;
 }
 
-.github__users button{
+.github__users button {
     color: #fff;
     padding: 1rem;
-    border:none;
+    border: none;
     background-color: #0d1017;
 
 }
 
-.github__users__item{
+.github__users__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -306,11 +309,11 @@ nav {
     cursor: pointer;
 }
 
-.github__item__img{
+.github__item__img {
     flex-basis: 30%;
     margin-right: 0.8rem;
 }
 
-.github__item__text{
+.github__item__text {
     flex-basis: 70%;
 }

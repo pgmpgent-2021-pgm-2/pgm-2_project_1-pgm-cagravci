@@ -168,7 +168,7 @@ void(() => {
                 <li class="person__repos__item">
                 <div class="person__repos__name">
                     <a href="${repo.clone_url}" target="_blank"">
-                        <h3>Geen Repos!</h3>
+                        <h3>No Repos!</h3>
                     </a>
                 </div>
                 </li>`
@@ -193,7 +193,7 @@ void(() => {
 
             } else {
                 str = `
-                <h2>Geen volgers!</2>`
+                <h2>No volgers!</2>`
             }
             document.querySelector('.person__followers__list').innerHTML = str;
         },
