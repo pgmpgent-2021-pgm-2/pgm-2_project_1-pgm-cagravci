@@ -1,7 +1,6 @@
 void(() => {
     const app = {
         initialize() {
-            this.cacheElements();
             //fetch API data for covid cases
             this.fetchGhentCovidPositiveCases();
             //fetch API data for weather in city
@@ -10,9 +9,6 @@ void(() => {
             this.fetchUsers();
 
             this.registerListeners();
-
-        },
-        cacheElements() {
 
         },
         registerListeners() {
