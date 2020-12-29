@@ -1,6 +1,6 @@
-void (() => {
+void(() => {
     const app = {
-        initialize (){
+        initialize() {
             this.cacheElements();
             //fetch API data for covid cases
             this.fetchGhentCovidPositiveCases();
@@ -10,31 +10,32 @@ void (() => {
             this.fetchUsers();
 
             this.registerListeners();
-            
-        },
-        cacheElements () {
 
         },
-        registerListeners () {
-          
+        cacheElements() {
+
+        },
+        registerListeners() {
+
             let $searchBtn = document.querySelector('#search__btn')
-                $searchBtn.addEventListener('click', event => {
-                    let searchStr = document.querySelector('#search').value;
-                    console.log('this is the search str', searchStr)
-                    this.fetchUsersByName(searchStr);
-                })
+            $searchBtn.addEventListener('click', event => {
+                let searchStr = document.querySelector('#search').value;
+                console.log('this is the search str', searchStr)
+                this.fetchUsersByName(searchStr);
+            })
 
-            let $search = document.querySelector('#search');
-                $search.addEventListener('keypress', event => {
-                    let searchStr = document.querySelector('#search').value;
-                    if (event.keyCode === 13) {
-                        //if enter-key(13) is pressed, act as if the user mouse-clicked on the search button
-                        this.fetchUsersByName(searchStr);
-                    }
-                })
-            
-        
-           
+            // let $search = document.querySelector('#search');
+            //     $search.addEventListener('keydown', (event) => {
+            //         if (event.keyCode === 13) {
+            //             let searchStr = document.querySelector('#search').value;
+            //             console.log('this is the search str', searchStr, event.keyCode)
+            //             //if enter-key(13) is pressed, act as if the user mouse-clicked on the search button
+            //             this.fetchUsersByName(searchStr);
+            //         }
+            //     })
+
+
+
         },
         async fetchUsersByName(name) {
             console.log('this user name is being fetched: ', name)
@@ -44,10 +45,10 @@ void (() => {
                 this.updateGHUsersList(users)
             })
         },
-        updateGHUsersList(users){
+        updateGHUsersList(users) {
             console.log('example of a user', users.items[0])
             console.log('updating users from search, with following users, is started...', users)
-            let str= '';
+            let str = '';
             for (let user in users.items) {
                 user = users.items[user]
                 str += `
@@ -64,19 +65,19 @@ void (() => {
             // this.registerListeners();
             let $usersSearch = document.querySelectorAll('.github__users__item')
             $usersSearch.forEach(user => {
-                    user.addEventListener('click', event=> {
-                        console.log(user)
-                        this.updateUserDetails(user)
-                    });
+                user.addEventListener('click', event => {
+                    console.log(user)
+                    this.updateUserDetails(user)
+                });
             })
-          
+
         },
-        updateUserDetails (item) {
+        updateUserDetails(item) {
             console.log('the following user is selected: ', item.id)
             console.log('updating user detail is started...')
 
             //find if it's a user from the json file or github search
-            if (!item.id.includes('search__')){
+            if (!item.id.includes('search__')) {
                 //find the user in our json file
                 let str = '';
                 for (const key in this.users) {
@@ -91,9 +92,9 @@ void (() => {
                     }
                     document.querySelector('.person__header').innerHTML = str;
                 }
-            } 
-            
-            item.id = item.id.replace('search__','');
+            }
+
+            item.id = item.id.replace('search__', '');
             //update the details of the selected person
             this.fetchDetailsOfUser(item.id); //fetch repos -- followers...
 
@@ -117,50 +118,62 @@ void (() => {
             console.log('example of a repo: ', repos[0])
 
             let str = '';
-            for (const key in repos) {
-                let repo = repos[key]
-                str += `
+            if (repos.length >= 1) {
+                for (const key in repos) {
+                    let repo = repos[key]
+                    str += `
+                    <li class="person__repos__item">
+                        <div class="person__repos__name">
+                            <a href="${repo.clone_url}" target="_blank"">
+                                <h3>${repo.full_name}</h3>
+                            </a>
+                        </div>
+                        <div class="person__repos__description">
+                            <p>${repo.name}</p>
+                        </div>
+                        <ul class="person__repos__details">
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.size} KB</p>
+                            </li>
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.default_branch}</p>
+                            </li>
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.license !== null ? repo.license.key : 'no license'}</p>
+                            </li>
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.private ? 'private' : 'public'}</p>
+                            </li>
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.forks_count}</p>
+                            </li>
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.open_issues_count}</p>
+                            </li>
+                            <li>
+                                <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
+                                <p>${repo.watchers}</p>
+                            </li>
+                        </ul>
+                    </li>`
+                }
+            } else {
+                str = `
                 <li class="person__repos__item">
-                    <div class="person__repos__name">
-                        <a href="${repo.clone_url} target="_blank"">
-                            <h3>${repo.full_name}</h3>
-                        </a>
-                    </div>
-                    <div class="person__repos__description">
-                        <p>${repo.name}</p>
-                    </div>
-                    <ul class="person__repos__details">
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.size} KB</p>
-                        </li>
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.default_branch}</p>
-                        </li>
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.license !== null ? repo.license.key : 'no license'}</p>
-                        </li>
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.private ? 'private' : 'public'}</p>
-                        </li>
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.forks_count}</p>
-                        </li>
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.open_issues_count}</p>
-                        </li>
-                        <li>
-                            <svg enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z"/></svg>
-                            <p>${repo.watchers}</p>
-                        </li>
-                    </ul>
+                <div class="person__repos__name">
+                    <a href="${repo.clone_url}" target="_blank"">
+                        <h3>Geen Repos!</h3>
+                    </a>
+                </div>
                 </li>`
             }
+
             document.querySelector('.person__repos__list').innerHTML = str;
         },
         updateUserFollowers(followers) {
@@ -170,19 +183,19 @@ void (() => {
             let str = '';
             if (followers.length >= 1) {
                 for (const key in followers) {
-                                let follow = followers[key]
-                                str += `
+                    let follow = followers[key]
+                    str += `
                                         <li class="person__followers__item">
                                             <img src="${follow.avatar_url}" alt="">
                                             <p>${follow.login}</p>
                                         </li>`
-                            }
-                           
+                }
+
             } else {
                 str = `
                 <h2>Geen volgers!</2>`
             }
-             document.querySelector('.person__followers__list').innerHTML = str;
+            document.querySelector('.person__followers__list').innerHTML = str;
         },
         async fetchUsers() {
             let pgmUsers = new UserApi();
@@ -191,14 +204,14 @@ void (() => {
                 this.users = users;
                 this.updatePGMUsers(users);
             });
-            
+
         },
         updatePGMUsers(users) {
             console.log('updating the pgm users has started...')
             let str = '';
-           for (const key in users) {
-               let user = users[key];
-               str += `
+            for (const key in users) {
+                let user = users[key];
+                str += `
                <li class="">
                <a class="pgm-persons__item" href="#" id="${user.portfolio['GitHub gebruikersnaam']}">
                     <div class="pgm-persons__img">
@@ -212,20 +225,20 @@ void (() => {
                     </div>
                 </a>
                 </li>`
-           }
+            }
 
-           document.querySelector('.pgm-persons__list').innerHTML = str;
+            document.querySelector('.pgm-persons__list').innerHTML = str;
 
-                     // this.registerListeners();
-                     let $pgmTeamList = document.querySelectorAll('.pgm-persons__item')
-                     $pgmTeamList.forEach(item => {
-                     if(item.getAttribute('hasEvent') !== true) {
-                         item.addEventListener('click', event => {
-                             this.updateUserDetails(item)
-                         })
-                         item.setAttribute('hasEvent', true)
-                     }
-                 });
+            // this.registerListeners();
+            let $pgmTeamList = document.querySelectorAll('.pgm-persons__item')
+            $pgmTeamList.forEach(item => {
+                if (item.getAttribute('hasEvent') !== true) {
+                    item.addEventListener('click', event => {
+                        this.updateUserDetails(item)
+                    })
+                    item.setAttribute('hasEvent', true)
+                }
+            });
 
         },
         async fetchGhentCovidPositiveCases() {
@@ -243,14 +256,14 @@ void (() => {
                 ${covidCases.records[0].fields.cases}
             </li>`
         },
-        async fetchWeather () {
+        async fetchWeather() {
             let weather = new WeatherApi();
             weather.getCurrentWeather('ghent', weather => {
                 console.log('weather is fetched: ', weather)
                 this.updateWeather(weather);
             })
         },
-        updateWeather (weather) {
+        updateWeather(weather) {
             console.log('updating the weather on page has started...')
             document.querySelector('.nav__items').innerHTML += `
             <li class="nav__item">
@@ -265,7 +278,7 @@ void (() => {
             <li class="nav__item">
                 ${weather.current.temp_c}°C
             </li>`
-            
+
         }
     }
     app.initialize();

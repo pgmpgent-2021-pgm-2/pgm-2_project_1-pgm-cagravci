@@ -6,101 +6,101 @@
         "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
         "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
+            "GitHub gebruikersnaam": "pgm-cagravci",
             "LinkedIn gebruikersnaam": "linked-cagravci"
         },
         "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "geboortedatum": 731363400000
     },
     "person2": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Silke",
+        "familienaam": "Van Meerbeek",
+        "email": "silkvanm@student.arteveldehs.be",
+        "thumbnail": "static/media/images/silke_image.jpg",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "GitHub gebruikersnaam": "pgm-silkvanm1",
+            "LinkedIn gebruikersnaam": "linked-silke"
         },
         "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "geboortedatum": 731363400000
     },
     "person3": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Philippe",
+        "familienaam": "De Pauw - Waterschoot",
+        "email": "drdynscript@gmail.com",
+        "thumbnail": "static/media/images/drdynscript_image.png",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
             "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "LinkedIn gebruikersnaam": "Philippe De Pauw - Waterschoot"
         },
-        "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "isStudentboolean": false,
+        "geboortedatum": 731363400000
     },
     "person4": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Thibault",
+        "familienaam": "Fouquaert",
+        "email": "thibault.fouquaert@arteveldehs.be",
+        "thumbnail": "static/media/images/Thibaultfq_image.jpg",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "GitHub gebruikersnaam": "Thibaultfq",
+            "LinkedIn gebruikersnaam": "Thibault Fouquaert"
         },
-        "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "isStudentboolean": false,
+        "geboortedatum": 731363400000
     },
     "person5": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Bram",
+        "familienaam": "Vandenbussche",
+        "email": "bramvand@student.arteveldehs.be",
+        "thumbnail": "static/media/images/bram_image.jpg",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "GitHub gebruikersnaam": "pgm-bramvand2",
+            "LinkedIn gebruikersnaam": "linked-bramvand"
         },
         "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "geboortedatum": 731363400000
     },
     "person6": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Jamie-Lee",
+        "familienaam": "Hart",
+        "email": "jamihart@student.arteveldehs.be",
+        "thumbnail": "static/media/images/jamie_image.jpg",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "GitHub gebruikersnaam": "pgm-jamihart",
+            "LinkedIn gebruikersnaam": "linked-jamihart"
         },
         "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "geboortedatum": 731363400000
     },
     "person7": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Khomchan",
+        "familienaam": "Phothichak",
+        "email": "khomphot@student.arteveldehs.be",
+        "thumbnail": "static/media/images/khomchan_image.jpg",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "GitHub gebruikersnaam": "Dev-Khomchan",
+            "LinkedIn gebruikersnaam": "linked-komchan"
         },
         "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "geboortedatum": 731363400000
     },
     "person8": {
-        "voornaam": "Cagri",
-        "familienaam": "Avci",
-        "email": "cagravci@student.arteveldehs.be",
-        "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ixpmln2hqkGMPpnBRYRQRAHaE9%26pid%3DApi&f=1",
-        "lijfspreuk": "mijn lijfspreuk is mijn lijfgeur",
+        "voornaam": "Bram",
+        "familienaam": "Criel",
+        "email": "bramcrie@student.arteveldehs.be",
+        "thumbnail": "static/media/images/bram_image.png",
+        "lijfspreuk": "ik ben een lijfspreuk",
         "portfolio": {
-            "GitHub gebruikersnaam": "drdynscript",
-            "LinkedIn gebruikersnaam": "linked-cagravci"
+            "GitHub gebruikersnaam": "pgm-bramcriel",
+            "LinkedIn gebruikersnaam": "linked-pgm-bramcriel"
         },
         "isStudentboolean": true,
-        "geboortedatum":731363400000
+        "geboortedatum": 731363400000
     }
 }
